@@ -13,7 +13,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchasers
+- has_many :purchase_records
 
 ## items テーブル
 
