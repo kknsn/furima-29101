@@ -9,7 +9,7 @@
 |family_name        |string  |null: false               |
 |first_kana         |string  |null: false               |
 |family_kana        |string  |null: false               |
-|birthday           |datetime|null: false               |
+|birthday           |date    |null: false               |
 
 ### Association
 - has_many :items
@@ -49,12 +49,12 @@
 
 |Column          |Type       |Options                        |
 |----------------|-----------|-------------------------------|
-|postal_code     |integer    |null: false                    |
+|postal_code     |string     |null: false                    |
 |prefecture_id   |integer    |null: false                    |
 |local           |string     |null: false                    |
 |house_num       |string     |null: false                    |
 |building_name   |string     |                               |
-|tel_num         |integer    |null: false                    |
+|tel_num         |string     |null: false                    |
 |purchase_record |references |null: false, foreign_key: true |
 
 ### Association
