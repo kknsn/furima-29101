@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :email, presence: true, uniqueness: true, inclusion: { in: @ }
+  validates :email, presence: true, uniqueness: true, format: { with: /@{1, }/ }
   validates :encrypted_password, presence: true, length: { minimum: 6 }
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :encrypted_password, with: PASSWORD_REGEX
@@ -16,6 +16,6 @@ class User < ApplicationRecord
     validates :first_kana
     validates :family_kana
   end
-  
+
   validates :birthday, presence: true
 end
