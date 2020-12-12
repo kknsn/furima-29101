@@ -3,7 +3,11 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  belongs_to :state
 
-  validates :genre_id, numericality: { other_than: 1 } 
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :state_id
+  end
   validates :name, :description, :price, presence: true
 end
