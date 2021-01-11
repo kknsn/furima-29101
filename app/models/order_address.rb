@@ -1,0 +1,15 @@
+class OrderAddress
+  include ActiveModel::Model
+  attr_accessor :postal_code, :prefecture_id, :local, :house_num, :building_name, :tel_num, :order_id, :user_id, :item_id
+
+  #配送先住所に関するバリデーション
+  validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
+  validates :tel_num, format: { with: /\A[0-9]+\z/ }, length: { maximum: 11 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :postal_code, :local, :house_num, :tel_num, presence: true
+
+  def save
+    user = Order.create(user_id: user.id, item_id: item.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, local: local, house_num: house_num, building_name: building_name, tel_num: tel_num, order_id: order.id)
+ end
+end
