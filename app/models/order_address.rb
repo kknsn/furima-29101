@@ -7,6 +7,8 @@ class OrderAddress
   validates :tel_num, format: { with: /\A[0-9]+\z/ }, length: { maximum: 11 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :postal_code, :local, :house_num, :tel_num, presence: true
+  #購入記録に関するバリデーション
+  validates :token, presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
