@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :local, :house_num, :building_name, :tel_num, :order_id, :user_id, :item_id
+  attr_accessor :postal_code, :prefecture_id, :local, :house_num, :building_name, :tel_num, :order_id, :user_id, :item_id,:token
 
   #配送先住所に関するバリデーション
   validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
