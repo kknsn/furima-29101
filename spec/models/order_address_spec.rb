@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
-  
+  describe '#create' do
   before do
-    @order_address = FactoryBot.build(:order_address)
+    user = FactoryBot.build(:user)
+    item = FactoryBot.build(:item)
+    @order_address = FactoryBot.build(:order_address,user_id: user[:id],item_id: item[:id])
   end
 
   describe '商品購入機能' do
@@ -74,5 +76,6 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
+  end
   end
 end
