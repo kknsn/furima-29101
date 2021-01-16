@@ -9,6 +9,8 @@ class OrderAddress
   validates :postal_code, :local, :house_num, :tel_num, presence: true
   #購入記録に関するバリデーション
   validates :token, presence: true
+  validates :user_id, presence: true
+  validates :item_id, presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)

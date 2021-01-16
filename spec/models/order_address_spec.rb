@@ -8,6 +8,9 @@ RSpec.describe OrderAddress, type: :model do
 
   describe '商品購入機能' do
     context '商品購入がうまくいくとき' do
+      it "項目を全て入力すれば保存できる" do
+        expect(@order_address).to be_valid
+      end
       it "building_name以外のの項目を全て入力すれば保存できる" do
         @order_address.building_name = ""
         expect(@order_address).to be_valid
@@ -59,6 +62,16 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it "user_idが空では登録できない" do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idが空では登録できない" do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
